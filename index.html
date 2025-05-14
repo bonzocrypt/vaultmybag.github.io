@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VaultMyBag</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f2f7fc;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 500px;
+    }
+
+    .vault-wrapper {
+      margin-top: 40px;
+      width: 150px;
+      height: 150px;
+      position: relative;
+    }
+
+    .vault-door {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #bbb, #888);
+      border: 6px solid #333;
+      position: absolute;
+      transform-origin: right center;
+      animation: bounceDoor 2s infinite ease-in-out;
+    }
+
+    .vault-handle {
+      width: 20px;
+      height: 20px;
+      background: #333;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 25%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes bounceDoor {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      40% {
+        transform: rotate(-15deg);
+      }
+      60% {
+        transform: rotate(-5deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Why are you here?</h1>
+  <p>
+    There's absolutely nothing to see.<br>
+    No secrets. No treasure. No vault.<br>
+    Just awkward silence... and this weird animation.
+  </p>
+
+  <div class="vault-wrapper">
+    <div class="vault-door">
+      <div class="vault-handle"></div>
+    </div>
+  </div>
+</body>
+</html>
