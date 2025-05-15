@@ -7,96 +7,93 @@
   <style>
     body {
       margin: 0;
-      background: #f3f5f8;
+      background: #0e1012;
       font-family: 'Segoe UI', sans-serif;
+      color: white;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
+      text-align: center;
     }
 
     h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
-      color: #222;
     }
 
     p {
-      color: #555;
-      font-size: 1.1rem;
-      text-align: center;
-      max-width: 500px;
+      color: #bbb;
+      font-size: 1.2rem;
     }
 
-    .vault-wrapper {
+    .loader {
       margin-top: 40px;
-      width: 160px;
-      height: 160px;
+      width: 200px;
+      height: 20px;
+      border: 2px solid #555;
+      border-radius: 10px;
+      overflow: hidden;
       position: relative;
     }
 
-    .vault-door {
-      width: 100%;
+    .loader-bar {
+      position: absolute;
       height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #c1c1c1, #8b8b8b);
-      border: 6px solid #333;
-      position: absolute;
-      transform-origin: right center;
-      animation: bounceDoor 2s infinite ease-in-out;
-      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+      width: 60%;
+      background: linear-gradient(to right, #50e3c2, #2c98f0);
+      animation: loading 2.5s ease-in-out infinite;
     }
 
-    .vault-hinge {
-      width: 12px;
-      height: 12px;
-      background: #222;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 5%;
-      transform: translate(-50%, -50%);
+    @keyframes loading {
+      0% { left: -60%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
     }
 
-    .vault-handle {
-      width: 26px;
-      height: 26px;
-      background: #444;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 30%;
-      transform: translate(-50%, -50%);
-      box-shadow: inset -2px -2px 4px rgba(0,0,0,0.3);
+    .status {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #888;
+      animation: statusCycle 6s linear infinite;
     }
 
-    @keyframes bounceDoor {
-      0%, 100% {
-        transform: rotate(0deg);
-      }
-      40% {
-        transform: rotate(-20deg);
-      }
-      60% {
-        transform: rotate(-7deg);
-      }
+    @keyframes statusCycle {
+      0%   { content: "Decrypting handbags..."; }
+      25%  { content: "Waxing leather handles..."; }
+      50%  { content: "Charging velvet..."; }
+      75%  { content: "Counting zippers..."; }
+      100% { content: "Decrypting handbags..."; }
     }
   </style>
 </head>
 <body>
   <h1>Why are you here?</h1>
-  <p>
-    There's absolutely nothing to see.<br>
-    No secrets. No treasure. No vault.<br>
-    Just awkward silence... and this weird animation.
-  </p>
+  <p>There’s absolutely nothing to see. Just a mysterious process loading...</p>
 
-  <div class="vault-wrapper">
-    <div class="vault-door">
-      <div class="vault-hinge"></div>
-      <div class="vault-handle"></div>
-    </div>
+  <div class="loader">
+    <div class="loader-bar"></div>
   </div>
+
+  <div class="status" id="status-text">Decrypting handbags...</div>
+
+  <script>
+    const statuses = [
+      "Decrypting handbags...",
+      "Waxing leather handles...",
+      "Charging velvet...",
+      "Counting zippers...",
+      "Summoning tote spirits...",
+      "Analyzing crocodile patterns...",
+      "Dusting off resale offers..."
+    ];
+    let index = 0;
+    const el = document.getElementById("status-text");
+    setInterval(() => {
+      index = (index + 1) % statuses.length;
+      el.textContent = statuses[index];
+    }, 2000);
+  </script>
 </body>
 </html>
